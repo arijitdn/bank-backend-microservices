@@ -18,7 +18,7 @@ app.use(limiter);
 
 // Request logging
 app.use((req: Request, res: Response, next: NextFunction) => {
-  logger.debug(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
+  logger.debug(`${req.method} ${req.url}`);
   next();
 });
 

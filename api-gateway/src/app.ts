@@ -5,6 +5,7 @@ import express, { NextFunction, Request, Response } from 'express';
 import helmet from 'helmet';
 import cors from 'cors';
 
+import { limiter } from './middlewares/rate-limiter.middleware';
 import { config } from './config';
 import logger from './config/logger';
 
@@ -12,6 +13,7 @@ const app = express();
 
 app.use(helmet());
 app.use(cors());
+app.use(limiter);
 
 // Request logging
 app.use((req: Request, res: Response, next: NextFunction) => {

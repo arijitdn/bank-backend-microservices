@@ -8,6 +8,7 @@ import cors from 'cors';
 import { limiter } from './middlewares/rate-limiter.middleware';
 import { config } from './config';
 import logger from './config/logger';
+import { proxyServices } from './config/services';
 
 const app = express();
 
@@ -27,6 +28,9 @@ app.get('/health', (req: Request, res: Response) => {
     status: 'ok',
   });
 });
+
+// Service routes
+proxyServices(app);
 
 // 404 handler
 app.use((req: Request, res: Response) => {

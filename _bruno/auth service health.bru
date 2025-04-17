@@ -1,0 +1,22 @@
+meta {
+  name: auth service health
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{auth-service-base-url}}/health
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "email": "arijit@bank-backend.com",
+    "password": "password"
+  }
+}
